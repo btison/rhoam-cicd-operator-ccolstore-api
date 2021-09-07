@@ -1,0 +1,18 @@
+{
+    "backend-cr": "3scale/backend.yml",
+    "product-cr": "3scale/product.yml",
+    "product-cr-name": "products-op-v1",
+    "backend-cr-name": "products-op-v1",
+    "staging-public-base-url": "https://products-op-v1-stage.apps.cloud-svc-tmm.vy75.p1.openshiftapps.com",
+    "production-public-base-url": "https://products-op-v1.apps.cloud-svc-tmm.vy75.p1.openshiftapps.com",
+    "public-basepath": "/v1",
+    "policies-config": "3scale/policies-config.json",
+    "applications": [
+        {
+            "account": "test-dev",
+            "name": "Products Operated V1",
+            "application-plan": "products-op-v1/basic",
+            "application-key": "user-key-products-op-v1"
+        }
+    ]
+}

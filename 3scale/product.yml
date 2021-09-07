@@ -1,0 +1,61 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Product
+metadata:
+  name: {{product-cr-name}}
+spec:
+  name: Products API Operated V1
+  systemName: products-op-v1
+  deployment: 
+    apicastSelfManaged:
+      authentication: 
+        userkey: 
+          authUserKey: user_key
+          credentials: headers
+      stagingPublicBaseURL: {{staging-public-base-url}}
+      productionPublicBaseURL: {{production-public-base-url}}
+  backendUsages:
+    products-op-v1:
+      path: /
+  metrics:
+    hits:
+      description: Number of API hits
+      friendlyName: Hits
+      unit: "hit"
+  methods:
+    get-product-by-id:
+      friendlyName: GetProductById
+      description: "Get Product By ID"
+    get-all-products:
+      friendlyName: GetAllProducts
+      description: "Get All Products"
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/v1/api/product/{id}$"
+      increment: 1
+      metricMethodRef: get-product-by-id
+    - httpMethod: GET
+      pattern: "/v1/api/products$"
+      increment: 1
+      metricMethodRef: get-all-products
+  applicationPlans:
+    products-op-v1/basic:
+      name: "Products Op V1 API Basic Plan"
+      appsRequireApproval: false
+      setupFee: "0.00"
+      costMonth: "0.00"
+      trialPeriod: 0
+      limits:
+        - metricMethodRef:
+            systemName: get-product-by-id
+          period: day
+          value: 600
+        - metricMethodRef: 
+            systemName: get-all-products
+          period: hour
+          value: 100
+    products-op-v1/extended:
+      name: "Products Op V1 API Extended Plan"
+      appsRequireApproval: false
+      setupFee: "0.00"
+      costMonth: "0.00"
+      trialPeriod: 0

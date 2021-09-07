@@ -1,0 +1,9 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: {{backend-cr-name}}
+  namespace: 3scale-tekton-operator
+spec:
+  name: Products API Backend Operated V1
+  privateBaseURL: 'https://products-api-coolstore.apps.cloud-svc-tmm.vy75.p1.openshiftapps.com'
+  systemName: products-op-v1

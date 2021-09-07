@@ -1,0 +1,22 @@
+[
+    {
+        "name": "apicast",
+        "version": "builtin",
+        "configuration": {},
+        "enabled": true
+    },
+    {
+        "name": "url_rewriting",
+        "version": "builtin",
+        "configuration": {
+            "commands": [
+                {
+                    "op": "sub",
+                    "regex": "^{{public-basepath}}",
+                    "replace": ""
+                }
+            ]
+        },
+        "enabled": true
+    }
+]
