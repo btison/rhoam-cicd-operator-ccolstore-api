@@ -52,7 +52,7 @@ spec:
         - metricMethodRef: 
             systemName: get-all-products
           period: hour
-          value: 100
+          value: 50
     products-op-v1/extended:
       name: "Products Op V1 API Extended Plan"
       appsRequireApproval: false
